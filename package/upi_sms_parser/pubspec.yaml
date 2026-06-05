@@ -1,6 +1,6 @@
 name: upi_sms_parser
 description: Parse UPI transaction SMS messages into structured Dart objects. Supports GPay, PhonePe, Paytm, BHIM, and Amazon Pay.
-version: 0.1.0
+version: 0.1.1
 homepage: https://github.com/gylshaurya/upi_sms_parser
 
 environment:
