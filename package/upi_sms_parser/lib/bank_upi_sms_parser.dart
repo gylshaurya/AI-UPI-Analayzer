@@ -1,4 +1,4 @@
-library upi_sms_parser;
+library bank_upi_sms_parser;
 
 import 'src/models/upi_transaction.dart';
 import 'src/regex_engine.dart';

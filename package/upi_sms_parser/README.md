@@ -1,4 +1,4 @@
-# upi_sms_parser
+# bank_upi_sms_parser
 
 A Dart package to parse UPI transaction SMS messages into clean, structured Dart objects.
 
