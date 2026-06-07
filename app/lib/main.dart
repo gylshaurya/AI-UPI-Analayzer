@@ -7,6 +7,8 @@ import 'bloc/transaction/transaction_bloc.dart';
 import 'bloc/transaction/transaction_event.dart';
 import 'bloc/insights/insights_bloc.dart';
 
+import 'presentation/screens/onboarding_screen.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -38,7 +40,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF1A73E8)),
           useMaterial3: true,
         ),
-        home: const Scaffold(body: Center(child: Text('Phase 2 done!'))),
+        home: const OnboardingScreen(),
       ),
     );
   }

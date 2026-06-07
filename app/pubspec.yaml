@@ -50,6 +50,8 @@ dependencies:
   # Charts (for analytics screen later)
   fl_chart: ^0.68.0
 
+  intl: ^0.19.0
+
   # Your own package (local path dependency)
   bank_upi_sms_parser:
     path: ../package/upi_sms_parser
