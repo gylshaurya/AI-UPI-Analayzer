@@ -6,11 +6,14 @@ import 'data/repositories/transaction_repository.dart';
 import 'bloc/transaction/transaction_bloc.dart';
 import 'bloc/transaction/transaction_event.dart';
 import 'bloc/insights/insights_bloc.dart';
-
 import 'presentation/screens/onboarding_screen.dart';
+
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await dotenv.load(fileName: ".env");
 
   // Init Hive
   await Hive.initFlutter();

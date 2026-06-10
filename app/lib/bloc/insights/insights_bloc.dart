@@ -4,10 +4,11 @@ import 'package:http/http.dart' as http;
 import 'insights_event.dart';
 import 'insights_state.dart';
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 class InsightsBloc extends Bloc<InsightsEvent, InsightsState> {
-  // Replace with your actual Gemini API key
-  static const _apiKey = 'YOUR_GEMINI_API_KEY';
-  static const _url =
+  static final String _apiKey = dotenv.env['API_KEY'] ?? 'fallback_key';
+  static String get _url =>
       'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=$_apiKey';
 
   InsightsBloc() : super(InsightsIdle()) {
