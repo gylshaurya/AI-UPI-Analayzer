@@ -6,19 +6,16 @@ import '../models/transaction_hive_model.dart';
 class TransactionRepository {
   static const _boxName = 'transactions';
 
-  // Read all stored transactions from Hive
   List<TransactionHiveModel> getStored() {
     final box = Hive.box<TransactionHiveModel>(_boxName);
     return box.values.toList()
       ..sort((a, b) => b.timestamp.compareTo(a.timestamp));
   }
 
-  // Read SMSes, parse them, save new ones to Hive
   Future<List<TransactionHiveModel>> syncFromSms() async {
     final box = Hive.box<TransactionHiveModel>(_boxName);
     final query = SmsQuery();
 
-    // Fetch last 200 SMSes
     final messages = await query.querySms(
       kinds: [SmsQueryKind.inbox],
       count: 200,
@@ -29,7 +26,6 @@ class TransactionRepository {
       final body = msg.body ?? '';
       final sender = msg.sender ?? '';
 
-      // Skip if we already stored this SMS
       final alreadyExists = box.values.any((t) => t.rawSms == body);
       if (alreadyExists) continue;
 
@@ -54,7 +50,6 @@ class TransactionRepository {
     return getStored();
   }
 
-  // Delete everything (useful for testing)
   Future<void> clearAll() async {
     await Hive.box<TransactionHiveModel>(_boxName).clear();
   }

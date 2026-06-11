@@ -9,7 +9,6 @@ import '../widgets/empty_state.dart';
 class AnalyticsScreen extends StatelessWidget {
   const AnalyticsScreen({super.key});
 
-  // Group transactions by week (last 6 weeks), summing debits
   Map<String, double> _weeklySpend(List<TransactionHiveModel> all) {
     final now = DateTime.now();
     final Map<String, double> result = {};
@@ -36,7 +35,6 @@ class AnalyticsScreen extends StatelessWidget {
     return result;
   }
 
-  // Top 5 payees by total amount sent
   List<MapEntry<String, double>> _topPayees(List<TransactionHiveModel> all) {
     final Map<String, double> totals = {};
     for (final tx in all) {

@@ -8,20 +8,39 @@ class OnboardingScreen extends StatelessWidget {
   Future<void> _requestPermission(BuildContext context) async {
     final status = await Permission.sms.request();
 
+    if (!context.mounted) return;
+
     if (status.isGranted) {
-      if (context.mounted) {
-        Navigator.of(
-          context,
-        ).pushReplacement(MaterialPageRoute(builder: (_) => const HomeShell()));
-      }
+      Navigator.of(
+        context,
+      ).pushReplacement(MaterialPageRoute(builder: (_) => const HomeShell()));
+    } else if (status.isPermanentlyDenied) {
+      showDialog(
+        context: context,
+        builder: (_) => AlertDialog(
+          title: const Text('Permission needed'),
+          content: const Text(
+            'SMS permission was denied permanently. Please enable it manually in Settings to use this app.',
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Cancel'),
+            ),
+            FilledButton(
+              onPressed: () {
+                openAppSettings();
+                Navigator.pop(context);
+              },
+              child: const Text('Open Settings'),
+            ),
+          ],
+        ),
+      );
     } else {
-      // Permission denied — still let them in, they can use the app
-      // with manually-synced data later or just see empty states
-      if (context.mounted) {
-        Navigator.of(
-          context,
-        ).pushReplacement(MaterialPageRoute(builder: (_) => const HomeShell()));
-      }
+      Navigator.of(
+        context,
+      ).pushReplacement(MaterialPageRoute(builder: (_) => const HomeShell()));
     }
   }
 

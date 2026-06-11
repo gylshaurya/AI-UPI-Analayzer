@@ -15,7 +15,6 @@ void main() async {
 
   await dotenv.load(fileName: ".env");
 
-  // Init Hive
   await Hive.initFlutter();
   Hive.registerAdapter(TransactionHiveModelAdapter());
   await Hive.openBox<TransactionHiveModel>('transactions');

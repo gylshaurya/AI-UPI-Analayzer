@@ -8,10 +8,10 @@ class TransactionHiveModel extends HiveObject {
   final double amount;
 
   @HiveField(1)
-  final String type; // 'debit' or 'credit'
+  final String type;
 
   @HiveField(2)
-  final String bank; // 'pnb' or 'icici'
+  final String bank;
 
   @HiveField(3)
   final String? payee;

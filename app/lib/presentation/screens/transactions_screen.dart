@@ -14,8 +14,8 @@ class TransactionsScreen extends StatefulWidget {
 }
 
 class _TransactionsScreenState extends State<TransactionsScreen> {
-  String? _typeFilter; // null, 'debit', 'credit'
-  String? _bankFilter; // null, 'pnb', 'icici'
+  String? _typeFilter;
+  String? _bankFilter;
 
   void _applyFilter(BuildContext context) {
     context.read<TransactionBloc>().add(
