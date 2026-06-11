@@ -8,8 +8,9 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class InsightsBloc extends Bloc<InsightsEvent, InsightsState> {
   static final String _apiKey = dotenv.env['API_KEY'] ?? 'fallback_key';
+
   static String get _url =>
-      'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=$_apiKey';
+      'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=$_apiKey';
 
   InsightsBloc() : super(InsightsIdle()) {
     on<AskQuestion>(_onAsk);
