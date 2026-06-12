@@ -58,3 +58,7 @@ API_KEY=your_key_here
 - SMS reading only works on a real Android device, not on emulator
 - On first launch, grant SMS permission and tap the sync button to load your transactions
 - Currently supports PNB and ICICI SMS formats. Other banks can be added by writing new regex patterns in the package
+
+## Demo
+
+Video link: [[Demo Video](https://drive.google.com/file/d/1nYWj2IYjj1TumiWvIScevuT7Ef-vCVl7/view?usp=sharing)]
